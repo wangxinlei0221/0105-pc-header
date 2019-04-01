@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0105</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<!--最外侧包裹容器-->
+<div id="wrap">
+  <!--头部区域-->
+  <header id="header">
+    <!--头部真正承接内容区域-->
+    <div class="headerMain">
+      <!--左侧logo区域-->
+      <h1 class="logo">
+        <a href="https://wwww.atguigu.com">
+          <img src="./img/logo.png" alt="atguigu">
+        </a>
+      </h1>
+      <!--右侧导航区域-->
+      <nav class="nav">
+        <ul class="navList clearfix">
+          <!--第一屏导航-->
+          <li class="navItem">
+            <a href="javascript:;">
+              <div class="up"><img src="./img/home_gruen.png"></div>
+              <div class="down"><img src="./img/home.png"></div>
+            </a>
+          </li>
+          <!--第二屏导航-->
+          <li class="navItem">
+            <a href="javascript:;">
+              <div class="up">Course</div>
+              <div class="down">Course</div>
+            </a>
+          </li>
+          <!--第三屏导航-->
+          <li class="navItem">
+            <a href="javascript:;">
+              <div class="up">Works</div>
+              <div class="down">Works</div>
+            </a>
+          </li>
+          <!--第四屏导航-->
+          <li class="navItem">
+            <a href="javascript:;">
+              <div class="up">About</div>
+              <div class="down">About</div>
+            </a>
+          </li>
+          <!--第五屏导航-->
+          <li class="navItem">
+            <a href="javascript:;">
+              <div class="up">Team</div>
+              <div class="down">Team</div>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <!--小三角-->
+      <div class="arrow"></div>
+    </div>
+  </header>
+  <!--内容区-->
+  <section id="content">
+  
+  </section>
+
+</div>
+
+</body>
+<script>
+  window.onload=function () {
+//    获取元素
+      var navUps=document.querySelectorAll('#header .headerMain .nav .navList .navItem .up');
+      var arrow=document.querySelector('#header .headerMain .arrow');
+      var navItem=document.querySelectorAll('#header .headerMain .nav .navList .navItem');
+
+//初始化第一个up元素高亮
+      navUps[0].style.width='100%';
+//      初始化三角位置
+      arrow.style.left=navItem[0].getBoundingClientRect().left+navItem[0].offsetWidth/2+'px';
+      for (var i = 0; i < navItem.length; i++) {
+          var item = navItem[i];
+          item.index=i;
+//          给每个导航项添加点击事件
+          item.onclick=function () {
+//              给所有的up去除高亮
+              for (var j = 0; j <navUps.length; j++) {
+                  navUps[j].style.width = ''
+              }
+//              给当前点击的navItem所包含的up添加高亮
+              navUps[this.index].style.width='100%'
+//              切换三角位置
+              arrow.style.left=navItem[this.index].getBoundingClientRect().left+navItem[this.index].offsetWidth/2+'px';
+          }
+      }
+  }
+</script>
+</html>
